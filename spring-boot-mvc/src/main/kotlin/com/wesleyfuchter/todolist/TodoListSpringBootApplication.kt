@@ -1,4 +1,4 @@
-package com.wesleyfuchter.financee.financee
+package com.wesleyfuchter.todolist
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

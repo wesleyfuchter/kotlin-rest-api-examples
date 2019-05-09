@@ -9,7 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.boot.test.web.client.postForEntity
 import org.springframework.http.HttpStatus
-import org.springframework.http.ResponseEntity
 import org.springframework.test.context.junit4.SpringRunner
 
 @RunWith(SpringRunner::class)
@@ -32,7 +31,8 @@ class TaskControllerIntegrationTest {
 
     @Test
     fun `test should persist a task and return the same content`() {
-        val result = template.postForEntity<Map<String, Any>>("/tasks", mapOf(Pair("description", "Task 3"), Pair("done", false)))
+        val result = template.postForEntity<Map<String, Any>>("/tasks",
+                mapOf(Pair("description", "Task 3"), Pair("done", false)))
         assertNotNull(result)
         assertEquals(result.statusCode, HttpStatus.OK)
         assertEquals(mapOf(Pair("description", "Task 3"), Pair("done", false)), result.body)
